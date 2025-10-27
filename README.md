@@ -51,17 +51,16 @@ Chef does it for you.
 
 ## Why Chef exists
 
-LLM apps all eventually hit the same wall: 1. Context is state.
-You need conversation history, tool outputs, knowledge, and policy in every turn — but not all of it, and not always in the same form. 2. Token budgets are real.
-You can’t keep throwing “the entire convo so far” and “all retrieved docs” at the model. Latency balloons. Cost spikes. Reasoning quality drops because the model is drowning. 3. Context gets messy fast.
+LLM apps all eventually hit the same wall:
 
-You start with prompt = ....
+1. Context is state. You need conversation history, tool outputs, knowledge, and policy in every turn — but not all of it, and not always in the same form.
+2. Token budgets are real. You can’t keep throwing “the entire convo so far” and “all retrieved docs” at the model. Latency balloons. Cost spikes. Reasoning quality drops because the model is drowning.
+3. Context gets messy fast:
 
-Then an includeIf(...).
-
-Then “summarize if > 1k tokens”.
-
-Then “prioritize tool results over memory unless…”
+- You start with `prompt = ....`
+- Then an `includeIf(...)`
+- Then `“summarize if > 1k tokens”`
+- Then `“prioritize tool results over memory unless…”`
 
 Suddenly, shipping changes to context is scarier than shipping model updates.
 
