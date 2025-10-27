@@ -151,7 +151,7 @@ Chef will: 1. Gather and render each requested token (“prepare the dishes”) 
 
 ## What makes Chef different
 
-1. Declarative dependencies between context blocks
+### 1. Declarative dependencies between context blocks
 
 Recipes say what they need using @ingredient("TokenName").
 You don’t write glue code every turn. You don’t manually thread state around.
@@ -164,7 +164,7 @@ Chef automatically:
 
 You get strong, testable contracts between “context producers.”
 
-2. Token-aware budgeting and graceful fallback
+### 2. Token-aware budgeting and graceful fallback
 
 You tell Chef your target budget.
 Chef will:
@@ -176,7 +176,7 @@ Chef will:
 This is per-request, not a one-time prompt hack.
 You can tune this per tool, per agent, per turn.
 
-3. Explainability
+### 3. Explainability
 
 When you run with { explain: true }, you get introspection for free.
 
@@ -194,7 +194,7 @@ This is huge for:
 • cost analysis
 • telling the next engineer “don’t worry, here’s exactly what went into the model”
 
-4. Detail levels + compression hooks
+### 4. Detail levels + compression hooks
 
 A Recipe can publish multiple “detail profiles” like:
 • "full" → full transcript
@@ -212,7 +212,7 @@ Chef will try to respect those detail levels, then optionally compress further i
 
 This gives you graceful “zoom out / zoom in” behavior without rewriting your prompt builder every week.
 
-5. No tokenizer lock-in
+### 5. No tokenizer lock-in
 
 Chef does not assume a specific model tokenizer.
 
