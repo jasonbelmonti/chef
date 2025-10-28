@@ -237,10 +237,14 @@ That means you can target gpt-4o today, local Llama tomorrow, Gemini next week, 
 ## Example: Human-in-the-loop (HITL) agent
 
 Let’s look at the included HITL example.
-This is a minimal “chat with memory” loop that: 1. Appends user/assistant messages to a conversation log. 2. Uses Chef to build a safe, structured prompt with:
+This is a minimal “chat with memory” loop that:
 
-- A system directive (behavioral policy)
-- Recent conversation history 3. Invokes an LLM with that plated context. 4. Saves the AI response back to the conversation log.
+1. Appends user/assistant messages to a conversation log.
+2. Uses Chef to build a safe, structured prompt with:
+   - A system directive (behavioral policy)
+   - Recent conversation history
+3. Invokes an LLM with that plated context.
+4. Saves the AI response back to the conversation log.
 
 ### 1. Token counting
 
@@ -264,7 +268,7 @@ export const countTokens = (text: string): number => {
 };
 ```
 
-This is the tokenizer we’ll pass to chef.cook() so Chef can make budget decisions based on the actual model you’re using.
+This is the tokenizer we’ll pass to `chef.cook()` so Chef can make budget decisions based on the actual model you’re using.
 
 ### 2. Create your Chef instance with pantry data
 
@@ -367,7 +371,7 @@ import { addMessage } from "@examples/hitl/conversationHistory";
 await addMessage(sessionId, "assistant", response);
 ```
 
-The next turn, ConversationHistory will include this assistant message.
+The next turn, `ConversationHistory` will include this assistant message.
 Chef will automatically pick it up (and summarize/compress if the session gets long).
 
 ## `chef.cook()` signature
@@ -386,21 +390,28 @@ await chef.cook({
 });
 ```
 
-Key knobs:
+### Key knobs:
 
-- order
-  Array of tokens (strings), or { token, detail } objects.
-  This is you saying: “Plate these, in this order, for this turn.”
-- budget
-  Chef will try to keep the final assembled prompt under this token limit.
+#### `order`
+
+Array of tokens (strings), or `{ token, detail }` objects. This is you saying: “Plate these, in this order, for this turn.”
+
+#### `budget`
+
+Chef will try to keep the final assembled prompt under this token limit.
+
 - First item in order is always included
 - Remaining items are included by priority
 - Auto-compression is attempted if available
 - If something still doesn’t fit, it’s dropped
-- countTokens
-  You control how tokens are counted. Chef doesn’t assume the model.
-- rankPriority
-  Custom priority sorter:
+
+#### `countTokens`
+
+You control how tokens are counted. Chef doesn’t assume the model.
+
+#### `rankPriority`
+
+Custom priority sorter:
 
 ```typescript
 rankPriority?: (info: {
@@ -411,9 +422,11 @@ rankPriority?: (info: {
 }) => number;
 ```
 
-By default, Chef maps common tags like "critical", "high", "low", or uses numeric priority fields declared on recipes. Higher score = more important.
+By default, Chef maps common tags like `"critical"`, `"high"`, `"low"`, or uses numeric priority fields declared on recipes. Higher score = more important.
 
-`explain: true` returns:
+#### `explain: true`
+
+returns:
 
 ```typescript
 {
@@ -424,7 +437,7 @@ By default, Chef maps common tags like "critical", "high", "low", or uses numeri
 }
 ```
 
-If explain is false or omitted, cook() just returns the context string directly.
+If `explain` is false or omitted, `cook()` just returns the context string directly.
 
 ## Debuggability & safety
 
@@ -432,10 +445,10 @@ Chef gives you something prompt hacks never will: auditability.
 
 You can:
 
-- Log every call to chef.cook({ explain: true })
-- Persist plated.plates for postmortems
+- Log every call to `chef.cook({ explain: true })`
+- Persist `plated.plates` for postmortems
 - Prove what the model did or did not “see”
-- Enforce internal policy like “SystemDirective must always be first and must always plate in full”
+- Enforce internal policy like “`SystemDirective` must always be first and must always plate in full”
 
 You can even diff runs over time:
 
@@ -470,7 +483,7 @@ Chef = Context Engineering as a first-class runtime.
 Chef makes context assembly:
 
 - modular
-- inspectable
+- auditable
 - budget-aware
 - production-friendly
 
