@@ -150,15 +150,19 @@ const plated = await chef.cook({
 });
 ```
 
-Chef will: 1. Gather and render each requested token (“prepare the dishes”) 2. Measure token cost for each 3. If there’s a budget, it will:
+Chef will:
 
-- Always include the first item, even if it’s huge (critical guardrail)
-- Sort other items by priority and try to fit them
-- Auto-fallback to “compressed” versions if available
-- Drop low-priority items if still over budget 4. Return:
-- The final prompt context (plated.context)
-- A full breakdown of what was included/excluded and why (plated.plates)
-- Token totals
+1. Gather and render each requested token (“prepare the dishes”)
+2. Measure token cost for each
+3. If there’s a budget, it will:
+   - Always include the first item, even if it’s huge (critical guardrail)
+   - Sort other items by priority and try to fit them
+   - Auto-fallback to “compressed” versions if available
+   - Drop low-priority items if still over budget
+4. Return:
+   - The final prompt context (plated.context)
+   - A full breakdown of what was included/excluded and why (plated.plates)
+   - Token totals
 
 ## What makes Chef different
 
