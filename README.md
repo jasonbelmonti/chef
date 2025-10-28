@@ -235,7 +235,7 @@ This gives you graceful “zoom out / zoom in” behavior without rewriting your
 
 Chef does not assume a specific model tokenizer.
 
-You hand it countTokens(text) — for example, a function that wraps js-tiktoken (shown in the examples below).
+You hand it `countTokens(text)` — for example, a function that wraps js-tiktoken (shown in the examples below).
 That means you can target gpt-4o today, local Llama tomorrow, Gemini next week, etc., without rewriting the budgeting logic.
 
 ## Example: Human-in-the-loop (HITL) agent
