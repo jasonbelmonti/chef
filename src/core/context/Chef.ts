@@ -254,7 +254,7 @@ export default class Chef<P extends Record<string, any>> {
     // First pass: prep each requested token (at the requested detail level),
     // possibly transform via detailProfiles, measure token cost, and gather
     // lineage/priority metadata. We ALSO probe for an even more compressed
-    // fallback form using summaryRecipe / compressible.
+    // fallback form using summaryRecipe.
     const preparedItems: Array<{
       token: string;
       detailRequested: string;
@@ -319,7 +319,7 @@ export default class Chef<P extends Record<string, any>> {
         `Preparing token "${token}": baseline cost = ${baselineCost} tokens`
       );
 
-      if (ctor && (ctor as any).compressible && (ctor as any).summaryRecipe) {
+      if (ctor && (ctor as any).summaryRecipe) {
         const summaryToken = (ctor as any).summaryRecipe as string;
         // The summary recipe is expected to @ingredient("<token>") this recipe,
         // so calling chef.prepare(summaryToken) should yield a shorter version.

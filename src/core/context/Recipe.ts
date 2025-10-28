@@ -59,12 +59,6 @@ export interface RecipeStaticHints {
   priority?: string | number;
 
   /**
-   * If true, Chef is allowed to use a compressed fallback version of this
-   * recipe's output when enforcing a token budget.
-   */
-  compressible?: boolean;
-
-  /**
    * Optional soft target for how large (in tokens) this recipe's output
    * should be after compression. (Not yet enforced automatically, but
    * reserved for future heuristics.)
@@ -107,7 +101,6 @@ export interface RecipeStaticHints {
  *
  * Subclasses MAY (optionally) add static metadata fields like:
  *   static priority = "critical";
- *   static compressible = true;
  *   static summaryRecipe = "SomeOtherRecipe";
  *   static detailProfiles = { summary: async (...) => "...", ... };
  *

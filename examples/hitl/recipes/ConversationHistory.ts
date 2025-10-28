@@ -8,7 +8,6 @@ export class ConversationHistory extends Recipe<string> {
 
   static priority = 20;
   static summaryRecipe = "ConversationHistorySummary";
-  static compressible = true;
 
   async prepare(@ingredient("sessionId") sessionId: string): Promise<string> {
     return loadSessionLog(sessionId);

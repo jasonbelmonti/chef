@@ -11,7 +11,6 @@ import {
 export class Characters extends Recipe<CharactersSpecType> {
   description = "Use the story seed to generate screenplay characters.";
 
-  static compressible = true;
   static summaryRecipe = "CharactersSummary";
 
   async prepare(
