@@ -160,8 +160,8 @@ Chef will:
    - Auto-fallback to “compressed” versions if available
    - Drop low-priority items if still over budget
 4. Return:
-   - The final prompt context (plated.context)
-   - A full breakdown of what was included/excluded and why (plated.plates)
+   - The final prompt context (`plated.context`)
+   - A full breakdown of what was included/excluded and why (`plated.plates`)
    - Token totals
 
 ## What makes Chef different
