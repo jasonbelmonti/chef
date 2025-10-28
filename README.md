@@ -285,7 +285,7 @@ const chef = new Chef<HITLInputType>({
 });
 ```
 
-Here the pantry only includes sessionId.
+Here the pantry only includes `sessionId`.
 Recipes can `@ingredient(“sessionId”)` to find the right conversation log for that user/session.
 
 ### 3. Cook the context
