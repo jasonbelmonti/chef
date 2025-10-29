@@ -111,7 +111,7 @@ Chef will treat pantry entries as first-class “ingredients” that other logic
 A Recipe is how you convert ingredients into actual prompt text or structured context.
 
 - It’s a class.
-- It declares which inputs it needs via @ingredient(...).
+- It declares which inputs it needs via `@ingredient(...)`.
 - It returns whatever “plate-ready” content you want.
 
 Recipe output can be:
@@ -300,13 +300,13 @@ const plated = await chef.cook({
 ```
 
 - order defines what we want “on the plate,” and in what order.
-- First item is SystemDirective (i.e. “you are an assistant that must…”)
-- Second is ConversationHistory
-- budget: 1000 means:
-- Try to keep it under ~1000 tokens total
-- Always include the first item (the directive), even if it’s huge
-- Prefer to compress/truncate/summarize history if needed
-- explain: true gives us full provenance.
+- First item is `SystemDirective` (i.e. “you are an assistant that must…”)
+- Second is `ConversationHistory`
+- `budget: 1000` means:
+  - Try to keep it under ~1000 tokens total
+  - Always include the first item (the directive), even if it’s huge
+  - Prefer to compress/truncate/summarize history if needed
+- `explain: true` gives us full provenance.
 
 ### 4. Inspect what Chef gave us
 
@@ -491,4 +491,4 @@ Chef makes context assembly:
 - budget-aware
 - production-friendly
 
-This is how you stop duct-taping prompts and start shipping context like an adult. 🍽️
+This is how you cook context like a chef. 🍽️
